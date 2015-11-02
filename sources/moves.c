@@ -23,6 +23,7 @@ void movePlayer(GRID* grid, CHARACTER* player, int move) {
             if (grid->matrix[pos_y - 1][pos_x] != WALL) {
                 pos_y = pos_y - 1;
                 player->pos_y = pos_y;
+                player->score -= VAL_MOVE;
             }
             break;
         case 'q' :
@@ -32,6 +33,7 @@ void movePlayer(GRID* grid, CHARACTER* player, int move) {
             if (grid->matrix[pos_y][pos_x - 1] != WALL) {
                 pos_x = pos_x - 1;
                 player->pos_x = pos_x;
+                player->score -= VAL_MOVE;
             }
             break;
         case 's' :
@@ -41,6 +43,7 @@ void movePlayer(GRID* grid, CHARACTER* player, int move) {
             if (grid->matrix[pos_y + 1][pos_x] != WALL) {
                 pos_y = pos_y + 1;
                 player->pos_y = pos_y;
+                player->score -= VAL_MOVE;
             }
             break;
         case 'd' :
@@ -50,9 +53,18 @@ void movePlayer(GRID* grid, CHARACTER* player, int move) {
             if (grid->matrix[pos_y][pos_x + 1] != WALL) {
                 pos_x = pos_x + 1;
                 player->pos_x = pos_x;
+                player->score -= VAL_MOVE;
             }
             break;
+        case 'p' :
+            player->pos_y = grid->height - 1;
+            player->pos_x = grid->width - 1;
+            player->score = 0;
         default :
             break;
     }
+}
+
+void manageItems(GRID* grid, CHARACTER* player) {
+
 }

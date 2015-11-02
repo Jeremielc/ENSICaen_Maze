@@ -38,9 +38,8 @@ void cleanGrid(GRID* grid) {
 * @brief Allow to display a maze.
 * @param grid - A GRID structure containing the maze matrix that you want to display.
 * @param player - A CHARACTER structure containing player coordinates.
-* @param score - The actual score of the user.
 */
-void displayGrid(GRID grid, CHARACTER player, int score) {
+void displayGrid(GRID grid, CHARACTER player) {
     system("clear");
     int i = 0;
     int j = 0;
@@ -63,7 +62,7 @@ void displayGrid(GRID grid, CHARACTER player, int score) {
         }
         printf("\n");
     }
-    printf("Score : %d\n", score);
+    printf("Score : %d\n", player.score);
 }
 
 /**

@@ -37,13 +37,14 @@ typedef struct {
 typedef struct {
     int pos_y;
     int pos_x;
+    int score;
 } CHARACTER;
 
 char*   askForAFileToLoad           ();
 char*   askForAName                 ();
 char    askForDefaultConfiguration  ();
 void    cleanGrid                   (GRID* grid);
-void    displayGrid                 (GRID, CHARACTER, int);
+void    displayGrid                 (GRID, CHARACTER);
 int     displayMenu                 ();
 char*   formatName                  (char*);
 void    flush                       ();
@@ -53,6 +54,7 @@ void    generateItems               (GRID*);
 void	generateWay	                (GRID*);
 void    initGrid                    (GRID*);
 void    load                        (GRID*, char*);
+void    manageItems                 (GRID*, CHARACTER*);
 void    movePlayer                  (GRID*, CHARACTER*, int);
 void    save                        (GRID*, char*);
 void 	searchAndReplace			(GRID*, int, int);
