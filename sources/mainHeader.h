@@ -19,25 +19,20 @@
 
 /**
 * @brief A structure used to contain the grid and its dimensions.
-* @param height - The height of the maze.
-* @param width - The width of the maze.
-* @param matrix - The maze itself as a tow dimensions table.
 */
 typedef struct {
-    int height;
-    int width;
-    int** matrix;
+    int height;     /*!< height - The height of the maze.*/
+    int width;      /*!< width - The width of the maze.*/
+    int** matrix;   /*!< matrix - The maze itself as a tow dimensions table.*/
 } GRID;
 
 /**
 * @brief A structure that contain coordinates for the differents characters.
-* @param pos_x - The x position of the character (column).
-* @param pos_y - The y position of the character (lines).
 */
 typedef struct {
-    int pos_y;
-    int pos_x;
-    int score;
+    int pos_y;  /*!< pos_x - The x position of the character (column).*/
+    int pos_x;  /*!< pos_y - The y position of the character (lines).*/
+    int score;  /*!< score - The score of the character.*/
 } CHARACTER;
 
 char*   askForAFileToLoad           ();
