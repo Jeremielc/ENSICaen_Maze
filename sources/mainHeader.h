@@ -27,7 +27,7 @@ typedef struct {
 } GRID;
 
 /**
-* @brief A structure that contain coordinates for the differents characters.
+* @brief A structure that contain coordinates and score for the differents characters.
 */
 typedef struct {
     int pos_y;  /*!< pos_x - The x position of the character (column).*/
