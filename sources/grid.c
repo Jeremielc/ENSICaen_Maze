@@ -158,17 +158,17 @@ void generateWay(GRID* grid) {
         y = rand() % grid->height -1;
         x = rand() % grid->width -1;
 
-        if (y != 0 && x != 0) {     /*Si differents des bords du labyrinthe*/
-            if (x % 2 == 0 && y % 2 == 1) { /*mur entre deux cellules horizontales*/
-                if (grid->matrix[y][x-1] != grid->matrix[y][x+1]) { /*si indices des deux cellules differents*/
+        if (y != 0 && x != 0) {                                                 /*Si differents des bords du labyrinthe*/
+            if (x % 2 == 0 && y % 2 == 1) {                                     /*mur entre deux cellules horizontales*/
+                if (grid->matrix[y][x-1] != grid->matrix[y][x+1]) {             /*si indices des deux cellules differents*/
                     grid->matrix[y][x] = VOID;
                     nbIteration++;
                     searchAndReplace(grid, grid->matrix[y][x-1], grid->matrix[y][x+1]);
                 }
             }
 
-            if (x % 2 == 1 && y % 2 == 0) { /*mur entre deux cellules verticales*/
-                if (grid->matrix[y-1][x] != grid->matrix[y+1][x]) { /*si indices des deux cellules differents*/
+            if (x % 2 == 1 && y % 2 == 0) {                                     /*mur entre deux cellules verticales*/
+                if (grid->matrix[y-1][x] != grid->matrix[y+1][x]) {             /*si indices des deux cellules differents*/
                     grid->matrix[y][x] = VOID;
                     nbIteration++;
                     searchAndReplace(grid, grid->matrix[y-1][x], grid->matrix[y+1][x]);

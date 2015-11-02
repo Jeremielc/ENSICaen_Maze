@@ -148,23 +148,23 @@ void load(GRID* grid, char* userNamed) {
     int width = 0;
     int height = 0;
 
-    do {    /*Search for the width of the matrix.*/
+    do {                                                                        /*Search for the width of the matrix.*/
         readed = fgetc(canal);
         if (readed == '#' || readed == ' ') {
             width++;
         }
     }while (readed != '\n' && readed != EOF);
 
-    rewind(canal);  /*Return to the beggining of the file.*/
+    rewind(canal);                                                              /*Return to the beggining of the file.*/
 
-    do {    /*Search for the height of the matrix.*/
+    do {                                                                        /*Search for the height of the matrix.*/
         readed = fgetc(canal);
         if (readed == '\n') {
             height++;
         }
     } while (readed != EOF);
 
-    if (grid->width < width && grid->height < height) {     /*If the previous grid is to small, reallocate matrix.*/
+    if (grid->width < width && grid->height < height) {                         /*If the previous grid is to small, reallocate matrix.*/
         freeMatrix(grid->height, grid->matrix);
         grid->matrix = (int**) calloc(height, sizeof(int*));
 
@@ -177,12 +177,12 @@ void load(GRID* grid, char* userNamed) {
     grid->width = width;
     grid->height = height;
 
-    rewind(canal);  /*Return to the beggining of the file.*/
+    rewind(canal);                                                              /*Return to the beggining of the file.*/
 
     int i = 0;
     int j = 0;
 
-    do {  /*Fill the matrix with file data.*/
+    do {                                                                        /*Fill the matrix with file data.*/
         readed = fgetc(canal);
         printf("[%d;%d]\n", i, j);
         fflush(stdout);
