@@ -12,7 +12,7 @@ int main (int argc, char ** argv) {
     CHARACTER player;
     player.pos_y = 1;
     player.pos_x = 0;
-    player.score = 1000;
+    player.score = 2000;
 
     do {
         choice = displayMenu();
@@ -43,10 +43,12 @@ int main (int argc, char ** argv) {
             case 3 :    /*Play the game*/
                 player.pos_y = 1;                       /*Positionning the player at the beggining of the maze.*/
                 player.pos_x = 0;                       /*...*/
+                player.score = 2000;                    /*Initialize the score.*/
 
                 displayGrid(grid, player);              /*Display the maze and the player at the beggining of the maze.*/
                 int keyPressed = 0;                     /*This loop get and mange the desired direction to move the player.*/
                 do {
+                    fputc((int) '\n', stdin);
                     keyPressed = 0;
                     keyPressed = getchar();
                     movePlayer(&grid, &player, keyPressed);
@@ -56,7 +58,11 @@ int main (int argc, char ** argv) {
                 } while (player.pos_x < (grid.width - 1) && player.pos_y < (grid.height - 1));
 
                 system("clear");
-                printf("You're out !\n");
+                if (keyPressed != 'p') {
+                    printf("You're out !\n");
+                } else {
+                    printf("You popped out of the maze !\n");
+                }
                 sleep(2);
                 break;
 

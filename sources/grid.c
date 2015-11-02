@@ -50,7 +50,7 @@ void displayGrid(GRID grid, CHARACTER player) {
                 printf("o");
             } else {
                 if (grid.matrix[i][j] == WALL) {
-                    printf("▓");
+                    printf("█");
                 } else if (grid.matrix[i][j] == VOID){
                     printf(" ");
                 } else if (grid.matrix[i][j] == BONUS) {
