@@ -35,7 +35,6 @@ int main (int argc, char ** argv) {
                 system("clear");
                 char* fileToLoad = askForAFileToLoad(); /*Ask the user to choose a name from his saves.*/
                 load(&grid, fileToLoad);                /*Load the grid and configure characters positions.*/
-                displayGrid(grid, player);
                 free(fileToLoad);                       /*De-allocate memory for the name of the save.*/
                 break;
 
