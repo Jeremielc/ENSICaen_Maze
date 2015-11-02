@@ -15,7 +15,6 @@ char* askForAName() {
     int readNumber = 0;
 
     do {
-        printf("%s\n", "getchar");
         readed = getchar();
         if (readed != '\n' && readed != EOF) {
             if (readNumber < sizeof(userNamed)) {
@@ -100,7 +99,7 @@ void save(GRID* grid, char* name) {
     for (i = 0; i < grid->height; i++) {
         for (j = 0; j < grid->width; j++) {
             if (grid->matrix[i][j] == WALL) {
-                fprintf(canal, "#"); /*▓*/
+                fprintf(canal, "#");
             } else if (grid->matrix[i][j] == VOID) {
                 fprintf(canal, " ");
             } else if (grid->matrix[i][j] == PLAYER) {
@@ -169,21 +168,29 @@ void load(GRID* grid, char* userNamed) {
     grid->height = height;
 
     rewind(canal);  /*Return to the beggining of the file.*/
+    printf("Width : %d\nHeight : %d\n", width, height);
 
     int i = 0;
     int j = 0;
 
     do {  /*Fill the matrix with file data.*/
         readed = fgetc(canal);
+        printf("[%d;%d]\n", i, j);
+        fflush(stdout);
         if (readed == '#') {
             grid->matrix[i][j] = WALL;
         } else if (readed == ' ') {
             grid->matrix[i][j] = VOID;
+        } else if (readed == 'B') {
+            grid->matrix[i][j] = BONUS;
+        } else if (grid->matrix[i][j] == 'M') {
+            grid->matrix[i][j] = MALUS;
         } else if (readed == '\n') {
             i++;
+            height--;
         }
         j = (j + 1) % (grid->width + 1);
-    } while (readed != EOF);
+    } while (readed != EOF && height > 0);
 
     fflush(canal);
     fclose(canal);

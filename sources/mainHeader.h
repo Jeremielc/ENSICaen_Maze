@@ -13,6 +13,9 @@
 #define PLAYER 1
 #define BONUS 2
 #define MALUS 3
+#define VAL_MOVE = 5;
+#define VAL_BONUS = 50;
+#define VAL_MALUS = 45;
 
 /**
 * @brief A structure used to contain the grid and its dimensions.
@@ -40,12 +43,13 @@ char*   askForAFileToLoad           ();
 char*   askForAName                 ();
 char    askForDefaultConfiguration  ();
 void    cleanGrid                   (GRID* grid);
-void    displayGrid                 (GRID, CHARACTER);
+void    displayGrid                 (GRID, CHARACTER, int);
 int     displayMenu                 ();
 char*   formatName                  (char*);
 void    flush                       ();
 void    freeMatrix					(int, int**);
 GRID    generateGrid                ();
+void    generateItems               (GRID*);
 void	generateWay	                (GRID*);
 void    initGrid                    (GRID*);
 void    load                        (GRID*, char*);

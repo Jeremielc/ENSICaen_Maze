@@ -38,8 +38,9 @@ void cleanGrid(GRID* grid) {
 * @brief Allow to display a maze.
 * @param grid - A GRID structure containing the maze matrix that you want to display.
 * @param player - A CHARACTER structure containing player coordinates.
+* @param score - The actual score of the user.
 */
-void displayGrid(GRID grid, CHARACTER player) {
+void displayGrid(GRID grid, CHARACTER player, int score) {
     system("clear");
     int i = 0;
     int j = 0;
@@ -51,13 +52,18 @@ void displayGrid(GRID grid, CHARACTER player) {
             } else {
                 if (grid.matrix[i][j] == WALL) {
                     printf("▓");
-                } else {
+                } else if (grid.matrix[i][j] == VOID){
                     printf(" ");
+                } else if (grid.matrix[i][j] == BONUS) {
+                    printf("B");
+                } else if (grid.matrix[i][j] == MALUS) {
+                    printf("M");
                 }
             }
         }
         printf("\n");
     }
+    printf("Score : %d\n", score);
 }
 
 /**
@@ -110,6 +116,31 @@ GRID generateGrid() {
     grid.matrix = matrix;
 
     return grid;
+}
+
+void generateItems(GRID* grid) {
+    int numberOfBonuses = grid->height;
+    int numberOfMaluses = grid->height;
+    int type = 0;
+    int y = 0;
+    int x = 0;
+
+    srand(time(NULL));
+    do {
+        y = rand() % (grid->height - 1);
+        x = rand() % (grid->width - 1);
+        type = rand() % 2;
+
+        if (grid->matrix[y][x] == VOID) {
+            if (type == 0) {
+                grid->matrix[y][x] = BONUS;
+                numberOfBonuses--;
+            } else if (type == 1) {
+                grid->matrix[y][x] = MALUS;
+                numberOfMaluses--;
+            }
+        }
+    } while(numberOfBonuses != 0 && numberOfMaluses != 0);
 }
 
 /**
