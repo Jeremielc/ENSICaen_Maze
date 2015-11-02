@@ -35,6 +35,7 @@ int main (int argc, char ** argv) {
                 system("clear");
                 char* fileToLoad = askForAFileToLoad(); /*Ask the user to choose a name from his saves.*/
                 load(&grid, fileToLoad);                /*Load the grid and configure characters positions.*/
+                displayGrid(grid, player);
                 free(fileToLoad);                       /*De-allocate memory for the name of the save.*/
                 break;
 
@@ -49,7 +50,7 @@ int main (int argc, char ** argv) {
                     keyPressed = getchar();
                     movePlayer(&grid, &player, keyPressed);
                     displayGrid(grid, player);          /*Refresh the grid with the update position of the player.*/
-                } while (player.pos_x < (grid.width- 1) && player.pos_y < (grid.height - 1));
+                } while (player.pos_x < (grid.width - 1) && player.pos_y < (grid.height - 1));
 
                 system("clear");
                 printf("You're out !\n");
@@ -60,8 +61,10 @@ int main (int argc, char ** argv) {
                 if (grid.matrix != NULL) {
                     freeMatrix(grid.height, grid.matrix);/*De-allocate memory for the maze.*/
                 }
-                system("clear");
+
                 printf("Good bye !\n");
+                sleep(2);
+                system("clear");
                 exit(0);
                 break;
 

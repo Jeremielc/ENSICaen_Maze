@@ -48,7 +48,7 @@ char* askForAFileToLoad() {
     char* userNamed = (char*) malloc(1 * sizeof(char));
 
     printf("Here are your saves : \n");
-    system("ls *.sav");
+    system("ls *.cfg");
     printf("Wich of them do you want to load ? : ");
 
     do {
@@ -92,7 +92,7 @@ void save(GRID* grid, char* name) {
     char* fileName = (char*) malloc((strlen(name) + 4) * sizeof(char));
 
     FILE* canal;
-    sprintf(fileName, "%s.sav", name);
+    sprintf(fileName, "%s.cfg", name);
     canal = fopen(fileName, "wt");
 
     int i = 0;
@@ -100,7 +100,7 @@ void save(GRID* grid, char* name) {
     for (i = 0; i < grid->height; i++) {
         for (j = 0; j < grid->width; j++) {
             if (grid->matrix[i][j] == WALL) {
-                fprintf(canal, "▓");
+                fprintf(canal, "#"); /*▓*/
             } else if (grid->matrix[i][j] == VOID) {
                 fprintf(canal, " ");
             } else if (grid->matrix[i][j] == PLAYER) {
@@ -130,9 +130,9 @@ void load(GRID* grid, char* userNamed) {
     FILE* canal;
 
     int userNamedLength = strlen(userNamed);
-    if (userNamed[userNamedLength-1] == 'v') {
-        if (userNamed[userNamedLength-2] == 'a') {
-            if (userNamed[userNamedLength-3] == 's') {
+    if (userNamed[userNamedLength-1] == 'g') {
+        if (userNamed[userNamedLength-2] == 'f') {
+            if (userNamed[userNamedLength-3] == 'c') {
                 if (userNamed[userNamedLength-4 == '.']){
                     canal = fopen(userNamed, "rt");
                 }
@@ -140,7 +140,7 @@ void load(GRID* grid, char* userNamed) {
         }
     } else {
         char* fileName = (char*) malloc((strlen(userNamed) + 4) * sizeof(char));
-        sprintf(fileName, "%s.sav", userNamed);
+        sprintf(fileName, "%s.cfg", userNamed);
         canal = fopen(fileName, "rt");
         free(fileName);
     }
@@ -149,14 +149,41 @@ void load(GRID* grid, char* userNamed) {
     int width = 0;
     int height = 0;
 
-    do {
+    do {    /*Search for the width of the matrix.*/
         readed = fgetc(canal);
-        if (readed != '\n' && readed != EOF) {
+        if (readed == '#' || readed == ' ') {
             width++;
         }
     }while (readed != '\n' && readed != EOF);
 
-    printf("Width : %d\n", width);
+    rewind(canal);  /*Return to the beggining of the file.*/
+
+    do {    /*Search for the height of the matrix.*/
+        readed = fgetc(canal);
+        if (readed == '\n') {
+            height++;
+        }
+    } while (readed != EOF);
+
+    grid->width = width;
+    grid->height = height;
+
+    rewind(canal);  /*Return to the beggining of the file.*/
+
+    int i = 0;
+    int j = 0;
+
+    do {  /*Fill the matrix with file data.*/
+        readed = fgetc(canal);
+        if (readed == '#') {
+            grid->matrix[i][j] = WALL;
+        } else if (readed == ' ') {
+            grid->matrix[i][j] = VOID;
+        } else if (readed == '\n') {
+            i++;
+        }
+        j = (j + 1) % (grid->width + 1);
+    } while (readed != EOF);
 
     fflush(canal);
     fclose(canal);
