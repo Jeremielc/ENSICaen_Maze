@@ -48,7 +48,6 @@ int main (int argc, char ** argv) {
                 displayGrid(grid, player);              /*Display the maze and the player at the beggining of the maze.*/
                 int keyPressed = 0;                     /*This loop get and mange the desired direction to move the player.*/
                 do {
-                    fputc((int) '\n', stdin);
                     keyPressed = 0;
                     keyPressed = getchar();
                     movePlayer(&grid, &player, keyPressed);
