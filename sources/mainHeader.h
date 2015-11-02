@@ -13,9 +13,9 @@
 #define PLAYER 1
 #define BONUS 2
 #define MALUS 3
-#define VAL_MOVE = 5;
-#define VAL_BONUS = 50;
-#define VAL_MALUS = 45;
+#define VAL_MOVE 5;
+#define VAL_BONUS 50;
+#define VAL_MALUS 45;
 
 /**
 * @brief A structure used to contain the grid and its dimensions.

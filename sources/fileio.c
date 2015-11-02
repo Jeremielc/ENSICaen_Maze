@@ -164,11 +164,20 @@ void load(GRID* grid, char* userNamed) {
         }
     } while (readed != EOF);
 
+    if (grid->width < width && grid->height < height) {     /*If the previous grid is to small, reallocate matrix.*/
+        freeMatrix(grid->height, grid->matrix);
+        grid->matrix = (int**) calloc(height, sizeof(int*));
+
+        int i = 0;
+        for (i = 0; i < height; i++) {
+            grid->matrix[i] = (int*) calloc(width, sizeof(int));
+        }
+    }
+
     grid->width = width;
     grid->height = height;
 
     rewind(canal);  /*Return to the beggining of the file.*/
-    printf("Width : %d\nHeight : %d\n", width, height);
 
     int i = 0;
     int j = 0;
