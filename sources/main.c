@@ -51,7 +51,9 @@ int main (int argc, char ** argv) {
                     displayGrid(grid, player);          /*Refresh the grid with the update position of the player.*/
                 } while (player.pos_x < (grid.width- 1) && player.pos_y < (grid.height - 1));
 
+                system("clear");
                 printf("You're out !\n");
+                sleep(3);
                 break;
 
             case 4 :    /*Close the program*/
