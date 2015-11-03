@@ -62,6 +62,40 @@ char* askForAFileToLoad() {
     return userNamed;
 }
 
+void displayHighscore(char* gridName) {
+    FILE* canal;
+    char* fileName = (char*) calloc(strlen(gridName) + 12, sizeof(char));
+    sprintf(fileName, "saves/%s.score", gridName);
+    canal = fopen(fileName, "rt");
+
+    int i = 0;
+    char* readedLine = (char*) calloc(28, sizeof(char));
+    char* verify = NULL;
+    printf("Rank\tUsername\tScore\n");
+    verify = fgets(readedLine, 27, canal);
+    do {
+        verify = fgets(readedLine, 27, canal);
+        for (i = 0; i < strlen(readedLine); i++) {
+            if (readedLine[i] != ';') {
+                printf("%c", readedLine[i]);
+            } else {
+                printf("\t");
+            }
+        }
+
+    } while(verify != NULL);
+
+    printf("Press 'c' then it enter to return to menu.\n");
+    int c = 0;
+    do {
+        c = getchar();
+    } while (c != 'c');
+
+    free(readedLine);
+    free(fileName);
+    fclose(canal);
+}
+
 /**
 * @brief Allow to replace spaces by underscores from a non well formated string.
 * @param name - A string provided by the user as a name for the save.
@@ -80,54 +114,6 @@ char* formatName(char* name) {
     }
 
     return finalName;
-}
-/**
-* @brief Allow to save the newly created grid.
-* @param grid - A pointer to a GRID structure containing the maze matrix and its dimensions.
-* @param name - The name of the grid. Used to name the save file.
-* @param personage -
-*/
-void save(GRID* grid, char* name) {
-    char* fileName = (char*) malloc((strlen(name) + 4) * sizeof(char));
-
-    FILE* canal;
-    sprintf(fileName, "%s.cfg", name);
-    canal = fopen(fileName, "wt");
-
-    int i = 0;
-    int j = 0;
-    for (i = 0; i < grid->height; i++) {
-        for (j = 0; j < grid->width; j++) {
-            switch (grid->matrix[i][j]) {
-                case WALL :
-                    fprintf(canal, "#");
-                    break;
-                case VOID :
-                    fprintf(canal, " ");
-                    break;
-                case PLAYER :
-                    fprintf(canal, "o");
-                    break;
-                case BONUS :
-                    fprintf(canal, "B");
-                    break;
-                case MALUS :
-                    fprintf(canal, "M");
-                    break;
-                default :
-                    continue;
-                    break;
-            }
-        }
-        fprintf(canal, "\n");
-    }
-
-    free(fileName);
-    fflush(canal);
-    fclose(canal);
-
-    system("ls saves/ > /dev/null/ 2>&1 || mkdir saves");
-    system("mv *.cfg saves/");
 }
 
 /**
@@ -226,10 +212,69 @@ void load(GRID* grid, char* userNamed) {
     fclose(canal);
 }
 
-void displayHighscore(char* gridName, int score) {
+void manageHighscore(char* gridName, int score) {
 
 }
 
-void manageHighscore(char* gridName, int score) {
+/**
+* @brief Allow to save the newly created grid.
+* @param grid - A pointer to a GRID structure containing the maze matrix and its dimensions.
+* @param name - The name of the grid. Used to name the save file.
+*/
+void save(GRID* grid, char* name) {
+    char* fileName = (char*) malloc((strlen(name) + 4) * sizeof(char));
 
+    FILE* canal;
+    sprintf(fileName, "%s.cfg", name);
+    canal = fopen(fileName, "wt");
+
+    int i = 0;
+    int j = 0;
+    for (i = 0; i < grid->height; i++) {
+        for (j = 0; j < grid->width; j++) {
+            switch (grid->matrix[i][j]) {
+                case WALL :
+                    fprintf(canal, "#");
+                    break;
+                case VOID :
+                    fprintf(canal, " ");
+                    break;
+                case PLAYER :
+                    fprintf(canal, "o");
+                    break;
+                case BONUS :
+                    fprintf(canal, "B");
+                    break;
+                case MALUS :
+                    fprintf(canal, "M");
+                    break;
+                default :
+                    continue;
+                    break;
+            }
+        }
+        fprintf(canal, "\n");
+    }
+
+    free(fileName);
+    fflush(canal);
+    fclose(canal);
+
+    FILE* highscore;
+    char* highscoreName = (char*) malloc((strlen(name) + 6) * sizeof(char));
+    sprintf(fileName, "%s.score", name);
+    highscore = fopen(highscoreName, "wt");
+    free(highscoreName);
+
+    fprintf(canal, "Rank;Username;Score\n");
+    i = 0;
+    for (i = 1; i <= 10; i++) {
+        fprintf(canal, "%02d;%.20s;%04d\n", i, "John Doe", 0);
+    }
+
+    fclose(highscore);
+
+    system("ls saves/ > /dev/null/ 2>&1 || mkdir saves");
+    system("mv *.cfg saves/");
+    system("mv *.score saves/");
 }

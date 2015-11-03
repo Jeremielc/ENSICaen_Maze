@@ -40,6 +40,7 @@ char*   askForAName                 ();
 char    askForDefaultConfiguration  ();
 void    cleanGrid                   (GRID* grid);
 void    displayGrid                 (GRID, CHARACTER);
+void    displayHighscore            (char*);
 int     displayMenu                 ();
 char*   formatName                  (char*);
 void    flush                       ();

@@ -16,6 +16,7 @@ int main (int argc, char ** argv) {
     player.score = 2000;
 
     int choice = 0;
+    char* fileName;
 
     do {
         choice = displayMenu();
@@ -27,20 +28,17 @@ int main (int argc, char ** argv) {
                 generateWay(&grid);                     /*Generate a way out of the maze.*/
                 cleanGrid(&grid);                       /*Ensure that the grid only contain VOID or WALL values.*/
                 printf("generate items\n");generateItems(&grid);
-
                 displayGrid(grid, player);              /*Display the maze and the player at the beggining of the maze.*/
 
-                char* fileToSave = askForAName();       /*Ask the user to choose a name for the save.*/
-                fileToSave = formatName(fileToSave);    /*Remove spaces from the name.*/
-                save(&grid, fileToSave);                /*Save the grid to a <name>.sav file.*/
-                free(fileToSave);                       /*De-allocate memory for the name of the file.*/
+                fileName = askForAName();
+                fileName = formatName(fileName);    /*Remove spaces from the name.*/
+                save(&grid, fileName);                /*Save the grid to a <name>.sav file.*/
                 break;
 
             case 2 :    /*Load game*/
                 system("clear");
-                char* fileToLoad = askForAFileToLoad(); /*Ask the user to choose a name from his saves.*/
-                load(&grid, fileToLoad);                /*Load the grid and configure characters positions.*/
-                free(fileToLoad);                       /*De-allocate memory for the name of the save.*/
+                fileName = askForAFileToLoad();
+                load(&grid, fileName);                /*Load the grid and configure characters positions.*/
                 break;
 
             case 3 :    /*Play the game*/
@@ -60,19 +58,20 @@ int main (int argc, char ** argv) {
                 system("clear");
                 if (keyPressed != 'p') {
                     printf("You're out !\n");
-                    /*Highscores*/
+                    printf("---------- Highscores ----------\n");
                 } else {
                     printf("You popped out of the maze !\n");
-                    /*Highscores*/
+                    printf("---------- Highscores ----------\n");
                 }
-                sleep(2);
+
+                displayHighscore(fileName);
                 break;
 
             case 4 :    /*Close the program*/
                 if (grid.matrix != NULL) {
                     freeMatrix(grid.height, grid.matrix);/*De-allocate memory for the maze.*/
                 }
-
+                free(fileName);
                 printf("Good bye !\n");
                 sleep(1);
                 system("clear");
