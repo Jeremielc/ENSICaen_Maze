@@ -62,6 +62,11 @@ char* askForAFileToLoad() {
     return userNamed;
 }
 
+/**
+* @brief Display the highscore table from the gridName.score file associated to the save.
+* @param gridNam - The name for the grid, readed from the user when the grid is newly generated,
+* from the name of the specified savefile when user choose one to load.
+*/
 void displayHighscore(char* gridName) {
     FILE* canal;
     char* fileName = (char*) calloc(strlen(gridName) + 12, sizeof(char));
@@ -85,6 +90,7 @@ void displayHighscore(char* gridName) {
 
     } while(verify != NULL);
 
+    printf("--------------------------------\n");
     printf("Press 'c' then it enter to return to menu.\n");
     int c = 0;
     do {
@@ -162,6 +168,12 @@ void load(GRID* grid, char* userNamed) {
             height++;
         }
     } while (readed != EOF);
+
+    if (width <= 3 && height <= 3) {                                            /*If the file isn't valid.*/
+        perror("Warning : The file you choose to load does not exist or is invalid.\n");
+        perror("Please load another file or regenerate one from the generate menu entry.\n");
+        break;
+    }
 
     if (grid->width < width && grid->height < height) {                         /*If the previous grid is to small, reallocate matrix.*/
         freeMatrix(grid->height, grid->matrix);

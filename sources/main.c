@@ -5,18 +5,18 @@
 #include "mainHeader.h"
 
 int main (int argc, char ** argv) {
-    GRID grid;
+    GRID grid;                                          /*Grid Initialization.*/
     grid.width = 0;
     grid.height = 0;
     grid.matrix = NULL;
 
-    CHARACTER player;
+    CHARACTER player;                                   /*Player Initialization.*/
     player.pos_y = 1;
     player.pos_x = 0;
     player.score = 2000;
 
     int choice = 0;
-    char* fileName;
+    char* fileName;                                     /*Name of the file used to save or load the maze.*/
 
     do {
         choice = displayMenu();
@@ -27,17 +27,17 @@ int main (int argc, char ** argv) {
                 initGrid(&grid);                        /*Initialization (empty cells surrounded by walls.)*/
                 generateWay(&grid);                     /*Generate a way out of the maze.*/
                 cleanGrid(&grid);                       /*Ensure that the grid only contain VOID or WALL values.*/
-                printf("generate items\n");generateItems(&grid);
+                generateItems(&grid);                   /*Dispatch bonuses and maluses in the maze.*/
                 displayGrid(grid, player);              /*Display the maze and the player at the beggining of the maze.*/
 
-                fileName = askForAName();
-                fileName = formatName(fileName);    /*Remove spaces from the name.*/
-                save(&grid, fileName);                /*Save the grid to a <name>.sav file.*/
+                fileName = askForAName();               /*Promt the user to give a potentialy not well formated name.*/
+                fileName = formatName(fileName);        /*Remove spaces from the name.*/
+                save(&grid, fileName);                  /*Save the grid to a <name>.cfg file.*/
                 break;
             case 2 :    /*Load game*/
                 system("clear");
-                fileName = askForAFileToLoad();
-                load(&grid, fileName);                /*Load the grid and configure characters positions.*/
+                fileName = askForAFileToLoad();         /*Promt the user to give a well formated name.*/
+                load(&grid, fileName);                  /*Load the grid and configure characters positions.*/
                 break;
             case 3 :    /*Play the game*/
                 player.pos_y = 1;                       /*Positionning the player at the beggining of the maze.*/
@@ -55,7 +55,7 @@ int main (int argc, char ** argv) {
 
                 system("clear");
                 if (keyPressed != 'p') {
-                    printf("You're out !\n");
+                    printf("You're out !\n\n");
                     printf("---------- Highscores ----------\n");
                     /*Manage Highscores*/
                 } else {

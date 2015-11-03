@@ -40,6 +40,8 @@ void flush() {
 
 /**
 * @brief Allow to free the memory reserved for the matrix representing the maze.
+* @param height - The number of lines in the matrix.
+* @param matrix - The tow dimensional tab to free.
 */
 void freeMatrix(int height, int** matrix) {
     int i = 0;

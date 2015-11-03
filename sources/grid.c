@@ -124,6 +124,10 @@ GRID generateGrid() {
     return grid;
 }
 
+/**
+* @brief Place items (bonuses and maluses) at random coordinates in the maze.
+* @param grid - A pointer to a GRID structure containing the maze matrix and its dimensions.
+*/
 void generateItems(GRID* grid) {
     int numberOfBonuses = grid->height;
     int numberOfMaluses = grid->height - 5;
