@@ -98,18 +98,25 @@ void save(GRID* grid, char* name) {
     int j = 0;
     for (i = 0; i < grid->height; i++) {
         for (j = 0; j < grid->width; j++) {
-            if (grid->matrix[i][j] == WALL) {
-                fprintf(canal, "#");
-            } else if (grid->matrix[i][j] == VOID) {
-                fprintf(canal, " ");
-            } else if (grid->matrix[i][j] == PLAYER) {
-                fprintf(canal, "o");
-            } else if (grid->matrix[i][j] == BONUS) {
-                fprintf(canal, "B");
-            } else if (grid->matrix[i][j] == MALUS) {
-                fprintf(canal, "M");
-            } else {
-                continue;
+            switch (grid->matrix[i][j]) {
+                case WALL :
+                    fprintf(canal, "#");
+                    break;
+                case VOID :
+                    fprintf(canal, " ");
+                    break;
+                case PLAYER :
+                    fprintf(canal, "o");
+                    break;
+                case BONUS :
+                    fprintf(canal, "B");
+                    break;
+                case MALUS :
+                    fprintf(canal, "M");
+                    break;
+                default :
+                    continue;
+                    break;
             }
         }
         fprintf(canal, "\n");
@@ -128,7 +135,7 @@ void save(GRID* grid, char* name) {
 void load(GRID* grid, char* userNamed) {
     FILE* canal;
 
-    int userNamedLength = strlen(userNamed);
+    int userNamedLength = strlen(userNamed);                       /*Verify if the user named his file with the extension.*/
     if (userNamed[userNamedLength-1] == 'g') {
         if (userNamed[userNamedLength-2] == 'f') {
             if (userNamed[userNamedLength-3] == 'c') {
@@ -137,7 +144,7 @@ void load(GRID* grid, char* userNamed) {
                 }
             }
         }
-    } else {
+    } else {                                                                    /*Add the extension.*/
         char* fileName = (char*) malloc((strlen(userNamed) + 4) * sizeof(char));
         sprintf(fileName, "%s.cfg", userNamed);
         canal = fopen(fileName, "rt");
@@ -186,21 +193,38 @@ void load(GRID* grid, char* userNamed) {
         readed = fgetc(canal);
         printf("[%d;%d]\n", i, j);
         fflush(stdout);
-        if (readed == '#') {
-            grid->matrix[i][j] = WALL;
-        } else if (readed == ' ') {
-            grid->matrix[i][j] = VOID;
-        } else if (readed == 'B') {
-            grid->matrix[i][j] = BONUS;
-        } else if (grid->matrix[i][j] == 'M') {
-            grid->matrix[i][j] = MALUS;
-        } else if (readed == '\n') {
-            i++;
-            height--;
+
+        switch (readed) {
+            case '#':
+                grid->matrix[i][j] = WALL;
+                break;
+            case ' ' :
+                grid->matrix[i][j] = VOID;
+                break;
+            case 'B' :
+                grid->matrix[i][j] = BONUS;
+                break;
+            case 'M' :
+                grid->matrix[i][j] = MALUS;
+                break;
+            case '\n' :
+                i++;
+                height--;
+            default :
+                break;
         }
+
         j = (j + 1) % (grid->width + 1);
     } while (readed != EOF && height > 0);
 
     fflush(canal);
     fclose(canal);
+}
+
+void displayHighscore(char* gridName, int score) {
+
+}
+
+void manageHighscore(char* gridName, int score) {
+
 }

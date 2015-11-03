@@ -5,14 +5,17 @@
 #include "mainHeader.h"
 
 int main (int argc, char ** argv) {
-    int choice = 0;
     GRID grid;
+    grid.width = 0;
+    grid.height = 0;
     grid.matrix = NULL;
 
     CHARACTER player;
     player.pos_y = 1;
     player.pos_x = 0;
     player.score = 2000;
+
+    int choice = 0;
 
     do {
         choice = displayMenu();
@@ -57,8 +60,10 @@ int main (int argc, char ** argv) {
                 system("clear");
                 if (keyPressed != 'p') {
                     printf("You're out !\n");
+                    /*Highscores*/
                 } else {
                     printf("You popped out of the maze !\n");
+                    /*Highscores*/
                 }
                 sleep(2);
                 break;

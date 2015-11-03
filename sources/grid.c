@@ -49,14 +49,21 @@ void displayGrid(GRID grid, CHARACTER player) {
             if (i == player.pos_y && j == player.pos_x) {
                 printf("o");
             } else {
-                if (grid.matrix[i][j] == WALL) {
-                    printf("█");
-                } else if (grid.matrix[i][j] == VOID){
-                    printf(" ");
-                } else if (grid.matrix[i][j] == BONUS) {
-                    printf("B");
-                } else if (grid.matrix[i][j] == MALUS) {
-                    printf("M");
+                switch (grid.matrix[i][j]) {
+                    case WALL :
+                        printf("█");
+                        break;
+                    case VOID :
+                        printf(" ");
+                        break;
+                    case BONUS :
+                        printf("B");
+                        break;
+                    case MALUS :
+                        printf("M");
+                        break;
+                    default :
+                        break;
                 }
             }
         }
