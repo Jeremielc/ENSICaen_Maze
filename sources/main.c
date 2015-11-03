@@ -59,7 +59,7 @@ int main (int argc, char ** argv) {
                     printf("---------- Highscores ----------\n");
                     /*Manage Highscores*/
                 } else {
-                    printf("You popped out of the maze !\n");
+                    printf("You popped out of the maze !\n\n");
                     printf("---------- Highscores ----------\n");
                 }
 
