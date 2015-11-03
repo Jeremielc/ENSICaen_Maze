@@ -51,8 +51,6 @@ int main (int argc, char ** argv) {
                     keyPressed = 0;
                     keyPressed = getchar();
                     movePlayer(&grid, &player, keyPressed);
-                    player.score -= VAL_MOVE;
-                    manageItems(&grid, &player);
                     displayGrid(grid, player);          /*Refresh the grid with the update position of the player.*/
                 } while (player.pos_x < (grid.width - 1) && player.pos_y < (grid.height - 1));
 

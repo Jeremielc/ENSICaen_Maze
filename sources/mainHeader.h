@@ -49,7 +49,6 @@ void    generateItems               (GRID*);
 void	generateWay	                (GRID*);
 void    initGrid                    (GRID*);
 void    load                        (GRID*, char*);
-void    manageItems                 (GRID*, CHARACTER*);
 void    movePlayer                  (GRID*, CHARACTER*, int);
 void    save                        (GRID*, char*);
 void 	searchAndReplace			(GRID*, int, int);

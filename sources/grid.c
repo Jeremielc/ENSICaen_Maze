@@ -119,7 +119,7 @@ GRID generateGrid() {
 
 void generateItems(GRID* grid) {
     int numberOfBonuses = grid->height;
-    int numberOfMaluses = grid->height;
+    int numberOfMaluses = grid->height - 5;
     int type = 0;
     int y = 0;
     int x = 0;
@@ -130,13 +130,15 @@ void generateItems(GRID* grid) {
         x = rand() % (grid->width - 1);
         type = rand() % 2;
 
-        if (grid->matrix[y][x] == VOID) {
-            if (type == 0) {
-                grid->matrix[y][x] = BONUS;
-                numberOfBonuses--;
-            } else if (type == 1) {
-                grid->matrix[y][x] = MALUS;
-                numberOfMaluses--;
+        if (y != 1 && y != (grid->height - 1) && x != 0 && x != grid->width) {
+            if (grid->matrix[y][x] == VOID) {
+                if (type == 0) {
+                    grid->matrix[y][x] = BONUS;
+                    numberOfBonuses--;
+                } else if (type == 1) {
+                    grid->matrix[y][x] = MALUS;
+                    numberOfMaluses--;
+                }
             }
         }
     } while(numberOfBonuses != 0 && numberOfMaluses != 0);

@@ -5,9 +5,9 @@
 #include "mainHeader.h"
 
 /**
-* @brief Manage the moves of the character.
+* @brief Manage the moves of the character and adjust the score.
 * @param grid - A pointer to a GRID structure containing the maze matrix and its dimensions.
-* @param player - A pointer to a CHARACTER structure containg player coordinates.
+* @param player - A pointer to a CHARACTER structure containg player coordinates and score.
 * @param move - A character repreenting the move to make.
 */
 void movePlayer(GRID* grid, CHARACTER* player, int move) {
@@ -25,6 +25,14 @@ void movePlayer(GRID* grid, CHARACTER* player, int move) {
                 player->pos_y = pos_y;
                 player->score -= VAL_MOVE;
             }
+
+            if (grid->matrix[player->pos_y][player->pos_x] == BONUS) {
+                player->score += VAL_BONUS;
+                grid->matrix[player->pos_y][player->pos_x] = VOID;
+            } else if (grid->matrix[player->pos_y][player->pos_x] == MALUS) {
+                player->score -= VAL_MALUS;
+                grid->matrix[player->pos_y][player->pos_x] = VOID;
+            }
             break;
         case 'q' :
             pos_y = player->pos_y;
@@ -34,6 +42,14 @@ void movePlayer(GRID* grid, CHARACTER* player, int move) {
                 pos_x = pos_x - 1;
                 player->pos_x = pos_x;
                 player->score -= VAL_MOVE;
+            }
+
+            if (grid->matrix[player->pos_y][player->pos_x] == BONUS) {
+                player->score += VAL_BONUS;
+                grid->matrix[player->pos_y][player->pos_x] = VOID;
+            } else if (grid->matrix[player->pos_y][player->pos_x] == MALUS) {
+                player->score -= VAL_MALUS;
+                grid->matrix[player->pos_y][player->pos_x] = VOID;
             }
             break;
         case 's' :
@@ -45,6 +61,14 @@ void movePlayer(GRID* grid, CHARACTER* player, int move) {
                 player->pos_y = pos_y;
                 player->score -= VAL_MOVE;
             }
+
+            if (grid->matrix[player->pos_y][player->pos_x] == BONUS) {
+                player->score += VAL_BONUS;
+                grid->matrix[player->pos_y][player->pos_x] = VOID;
+            } else if (grid->matrix[player->pos_y][player->pos_x] == MALUS) {
+                player->score -= VAL_MALUS;
+                grid->matrix[player->pos_y][player->pos_x] = VOID;
+            }
             break;
         case 'd' :
             pos_y = player->pos_y;
@@ -55,6 +79,14 @@ void movePlayer(GRID* grid, CHARACTER* player, int move) {
                 player->pos_x = pos_x;
                 player->score -= VAL_MOVE;
             }
+
+            if (grid->matrix[player->pos_y][player->pos_x] == BONUS) {
+                player->score += VAL_BONUS;
+                grid->matrix[player->pos_y][player->pos_x] = VOID;
+            } else if (grid->matrix[player->pos_y][player->pos_x] == MALUS) {
+                player->score -= VAL_MALUS;
+                grid->matrix[player->pos_y][player->pos_x] = VOID;
+            }
             break;
         case 'p' :
             player->pos_y = grid->height - 1;
@@ -63,8 +95,4 @@ void movePlayer(GRID* grid, CHARACTER* player, int move) {
         default :
             break;
     }
-}
-
-void manageItems(GRID* grid, CHARACTER* player) {
-
 }
