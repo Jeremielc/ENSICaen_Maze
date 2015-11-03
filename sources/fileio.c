@@ -47,7 +47,7 @@ char* askForAFileToLoad() {
     char* userNamed = (char*) malloc(1 * sizeof(char));
 
     printf("Here are your saves : \n");
-    system("ls *.cfg");
+    system("ls saves/*.cfg | sed -e 's@saves/@    @g'");
     printf("Wich of them do you want to load ? : ");
 
     do {
@@ -125,6 +125,9 @@ void save(GRID* grid, char* name) {
     free(fileName);
     fflush(canal);
     fclose(canal);
+
+    system("ls saves/ > /dev/null/ 2>&1 || mkdir saves");
+    system("mv *.cfg saves/");
 }
 
 /**
@@ -140,13 +143,16 @@ void load(GRID* grid, char* userNamed) {
         if (userNamed[userNamedLength-2] == 'f') {
             if (userNamed[userNamedLength-3] == 'c') {
                 if (userNamed[userNamedLength-4 == '.']){
+                    char* fileName = (char*) malloc((strlen(userNamed) + 6) * sizeof(char));
+                    sprintf(fileName, "saves/%s", userNamed);
                     canal = fopen(userNamed, "rt");
+                    free(fileName);
                 }
             }
         }
     } else {                                                                    /*Add the extension.*/
-        char* fileName = (char*) malloc((strlen(userNamed) + 4) * sizeof(char));
-        sprintf(fileName, "%s.cfg", userNamed);
+        char* fileName = (char*) malloc((strlen(userNamed) + 10) * sizeof(char));
+        sprintf(fileName, "saves/%s.cfg", userNamed);
         canal = fopen(fileName, "rt");
         free(fileName);
     }
@@ -191,7 +197,6 @@ void load(GRID* grid, char* userNamed) {
 
     do {                                                                        /*Fill the matrix with file data.*/
         readed = fgetc(canal);
-        printf("[%d;%d]\n", i, j);
         fflush(stdout);
 
         switch (readed) {
