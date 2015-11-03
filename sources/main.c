@@ -34,13 +34,11 @@ int main (int argc, char ** argv) {
                 fileName = formatName(fileName);    /*Remove spaces from the name.*/
                 save(&grid, fileName);                /*Save the grid to a <name>.sav file.*/
                 break;
-
             case 2 :    /*Load game*/
                 system("clear");
                 fileName = askForAFileToLoad();
                 load(&grid, fileName);                /*Load the grid and configure characters positions.*/
                 break;
-
             case 3 :    /*Play the game*/
                 player.pos_y = 1;                       /*Positionning the player at the beggining of the maze.*/
                 player.pos_x = 0;                       /*...*/
@@ -59,6 +57,7 @@ int main (int argc, char ** argv) {
                 if (keyPressed != 'p') {
                     printf("You're out !\n");
                     printf("---------- Highscores ----------\n");
+                    /*Manage Highscores*/
                 } else {
                     printf("You popped out of the maze !\n");
                     printf("---------- Highscores ----------\n");
@@ -66,18 +65,14 @@ int main (int argc, char ** argv) {
 
                 displayHighscore(fileName);
                 break;
-
             case 4 :    /*Close the program*/
                 if (grid.matrix != NULL) {
                     freeMatrix(grid.height, grid.matrix);/*De-allocate memory for the maze.*/
                 }
                 free(fileName);
-                printf("Good bye !\n");
-                sleep(1);
                 system("clear");
                 exit(0);
                 break;
-
             default :
                 break;
         }
