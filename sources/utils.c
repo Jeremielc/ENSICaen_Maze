@@ -52,3 +52,24 @@ void freeMatrix(int height, int** matrix) {
 
     free(matrix);
 }
+
+void order(HIGHSCORE* scoreTab) {
+    int i = 11;
+    int j = 0;
+    int change = 1;
+    HIGHSCORE temp;
+
+    while (i > 0 && change == 1) {
+        change = 0;
+        for (j = 1; j < i - 1; j++) {
+            if (scoreTab[j].score > scoreTab[j + 1].score) {
+                temp = scoreTab[j];
+                scoreTab[j] = scoreTab[j + 1];
+                scoreTab[j + 1] = temp;
+                change = 1;
+            }
+        }
+
+        i--;
+    }
+}

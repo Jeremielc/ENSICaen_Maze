@@ -64,7 +64,7 @@ char* askForAFileToLoad() {
 
 /**
 * @brief Display the highscore table from the gridName.score file associated to the save.
-* @param gridNam - The name for the grid, readed from the user when the grid is newly generated,
+* @param gridName - The name for the grid, readed from the user when the grid is newly generated,
 * from the name of the specified savefile when user choose one to load.
 */
 void displayHighscore(char* gridName) {
@@ -91,7 +91,7 @@ void displayHighscore(char* gridName) {
     } while(verify != NULL);
 
     printf("--------------------------------\n");
-    printf("Press 'c' then it enter to return to menu.\n");
+    printf("Press 'c' then hit enter to return to menu.\n");
     int c = 0;
     do {
         c = getchar();
@@ -172,7 +172,7 @@ void load(GRID* grid, char* userNamed) {
     if (width <= 3 && height <= 3) {                                            /*If the file isn't valid.*/
         perror("Warning : The file you choose to load does not exist or is invalid.\n");
         perror("Please load another file or regenerate one from the generate menu entry.\n");
-        break;
+        return;
     }
 
     if (grid->width < width && grid->height < height) {                         /*If the previous grid is to small, reallocate matrix.*/
@@ -225,7 +225,87 @@ void load(GRID* grid, char* userNamed) {
 }
 
 void manageHighscore(char* gridName, int score) {
+    HIGHSCORE* scoreTab = (HIGHSCORE*) malloc(11 * sizeof(HIGHSCORE));
 
+    FILE* canal;
+    char* fileName = (char*) calloc(strlen(gridName) + 12, sizeof(char));
+    sprintf(fileName, "saves/%s.score", gridName);
+    canal = fopen(fileName, "rt");
+
+    char* readedLine = (char*) calloc(28, sizeof(char));
+    char* verify = NULL;
+    verify = fgets(readedLine, 27, canal);
+
+    char* readedScore = (char*) calloc(4, sizeof(char));
+    int convertedScore = 0;
+
+    int i = 0;
+    int j = 0;
+    int pos = 0;
+    int semicolonCount = 0;
+
+    do {
+        char* userName = (char*) calloc(20, sizeof(char));
+        verify = fgets(readedLine, 27, canal);
+        semicolonCount = 0;
+        for (i = 0; i < strlen(readedLine); i++) {
+            if (readedLine[i] == ';') {
+                semicolonCount++;
+                pos = i + 1;
+                continue;
+            }
+
+            switch (semicolonCount) {
+                case 1 :
+                    userName[i - pos] = readedLine[i];
+                    break;
+                case 2 :
+                    readedScore[i - pos] = readedLine[i];
+                    break;
+                default :
+                    break;
+            }
+
+            convertedScore = atoi(readedScore);
+        }
+
+        scoreTab[j].name = userName;
+        scoreTab[j].score = convertedScore;
+
+        j++;
+        free(userName);
+    } while(verify != NULL);
+
+    char* name = promptForNewHighscore(score);
+    scoreTab[10].name = name;
+    scoreTab[10].score = score;
+
+    order(scoreTab);
+
+    fclose(canal);
+    canal = fopen(fileName, "wt");
+
+    int index = 0;
+    fprintf(canal, "Rank;Username;Score\n");
+    for (index = 10; index > 0; index--) {
+        fprintf(canal, "%02d;%.20s;%04d\n", 11-index, scoreTab[index].name, scoreTab[index].score);
+    }
+
+    free(name);
+    free(fileName);
+    fclose(canal);
+}
+
+char* promptForNewHighscore(int score) {
+    printf("You are one of the ten best player on this grid !\n");
+    printf("Enter your name to save your score of %d points : ", score);
+
+    char* name = (char*) calloc(20, sizeof(char));
+    fgets(name, 20, stdin);
+
+    name[strlen(name) - 1] = '\0'; /*Remove \n character.*/
+
+    return name;
 }
 
 /**

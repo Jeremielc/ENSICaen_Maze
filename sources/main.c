@@ -56,6 +56,7 @@ int main (int argc, char ** argv) {
                 system("clear");
                 if (keyPressed != 'p') {
                     printf("You're out !\n\n");
+                    manageHighscore(fileName, player.score);
                     printf("---------- Highscores ----------\n");
                     /*Manage Highscores*/
                 } else {

@@ -35,6 +35,11 @@ typedef struct {
     int score;  /*!< score - The score of the character.*/
 } CHARACTER;
 
+typedef struct {
+    int score;
+    char* name;
+} HIGHSCORE;
+
 char*   askForAFileToLoad           ();
 char*   askForAName                 ();
 char    askForDefaultConfiguration  ();
@@ -47,9 +52,12 @@ void    flush                       ();
 void    freeMatrix					(int, int**);
 GRID    generateGrid                ();
 void    generateItems               (GRID*);
-void	generateWay	                (GRID*);
+void    generateWay	                (GRID*);
 void    initGrid                    (GRID*);
 void    load                        (GRID*, char*);
+void    manageHighscore             (char*, int);
 void    movePlayer                  (GRID*, CHARACTER*, int);
+void    order                       (HIGHSCORE*);
+char*   promptForNewHighscore       ();
 void    save                        (GRID*, char*);
 void 	searchAndReplace			(GRID*, int, int);
