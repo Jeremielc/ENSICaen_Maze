@@ -74,6 +74,7 @@ void displayHighscore(char* gridName) {
     canal = fopen(fileName, "rt");
 
     int i = 0;
+    int j = 0;
     char* readedLine = (char*) calloc(28, sizeof(char));
     char* verify = NULL;
     printf("Rank\tUsername\tScore\n");
@@ -87,8 +88,8 @@ void displayHighscore(char* gridName) {
                 printf("\t");
             }
         }
-
-    } while(verify != NULL);
+        j++;
+    } while(verify != NULL && j < 10);
 
     printf("--------------------------------\n");
     printf("Press 'c' then hit enter to return to menu.\n");
@@ -146,6 +147,12 @@ void load(GRID* grid, char* userNamed) {
         char* fileName = (char*) malloc((strlen(userNamed) + 10) * sizeof(char));
         sprintf(fileName, "saves/%s.cfg", userNamed);
         canal = fopen(fileName, "rt");
+        if (canal == NULL) {                                                    /*If the file isn't valid.*/
+            perror("Warning : The file you choose to load does not exist or is invalid.\n");
+            perror("Please load another file or regenerate one from the generate menu entry.\n");
+            sleep(5);
+            return;
+        }
         free(fileName);
     }
 
@@ -169,11 +176,7 @@ void load(GRID* grid, char* userNamed) {
         }
     } while (readed != EOF);
 
-    if (width <= 3 && height <= 3) {                                            /*If the file isn't valid.*/
-        perror("Warning : The file you choose to load does not exist or is invalid.\n");
-        perror("Please load another file or regenerate one from the generate menu entry.\n");
-        return;
-    }
+
 
     if (grid->width < width && grid->height < height) {                         /*If the previous grid is to small, reallocate matrix.*/
         freeMatrix(grid->height, grid->matrix);
