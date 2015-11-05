@@ -127,9 +127,10 @@ char* formatName(char* name) {
 * @brief Allow to load a previously saved grid.
 * @param grid - A pointer to a GRID structure that will be used to store the maze matrix and its dimensions.
 * @param name - The name of the save file to load (with its extension).
+* @return 0 if the grid cannot be loaded, 1 if it can.
 */
-void load(GRID* grid, char* userNamed) {
-    FILE* canal;
+int load(GRID* grid, char* userNamed) {
+    FILE* canal = NULL;
 
     int userNamedLength = strlen(userNamed);                       /*Verify if the user named his file with the extension.*/
     if (userNamed[userNamedLength-1] == 'g') {
@@ -147,13 +148,14 @@ void load(GRID* grid, char* userNamed) {
         char* fileName = (char*) malloc((strlen(userNamed) + 10) * sizeof(char));
         sprintf(fileName, "saves/%s.cfg", userNamed);
         canal = fopen(fileName, "rt");
-        if (canal == NULL) {                                                    /*If the file isn't valid.*/
-            perror("Warning : The file you choose to load does not exist or is invalid.\n");
-            perror("Please load another file or regenerate one from the generate menu entry.\n");
-            sleep(5);
-            return;
-        }
         free(fileName);
+    }
+
+    if (canal == NULL) {                                                        /*If the file isn't valid.*/
+        printf("Warning : The file you choose to load does not exist or is invalid.\n");
+        perror("Please load another file or regenerate one from the generate menu entry.\n");
+        sleep(5);
+        return 0;
     }
 
     int readed = 0;
@@ -225,10 +227,12 @@ void load(GRID* grid, char* userNamed) {
 
     fflush(canal);
     fclose(canal);
+
+    return 1;
 }
 
 void manageHighscore(char* gridName, int score) {
-    HIGHSCORE* scoreTab = (HIGHSCORE*) malloc(11 * sizeof(HIGHSCORE));
+    HIGHSCORE* scoreTab = (HIGHSCORE*) calloc(11, sizeof(HIGHSCORE));
 
     FILE* canal;
     char* fileName = (char*) calloc(strlen(gridName) + 12, sizeof(char));
@@ -239,6 +243,7 @@ void manageHighscore(char* gridName, int score) {
     char* verify = NULL;
     verify = fgets(readedLine, 27, canal);
 
+    char* userName;
     char* readedScore = (char*) calloc(4, sizeof(char));
     int convertedScore = 0;
 
@@ -248,7 +253,7 @@ void manageHighscore(char* gridName, int score) {
     int semicolonCount = 0;
 
     do {
-        char* userName = (char*) calloc(20, sizeof(char));
+        userName = (char*) calloc(20, sizeof(char));
         verify = fgets(readedLine, 27, canal);
         semicolonCount = 0;
         for (i = 0; i < strlen(readedLine); i++) {
@@ -273,17 +278,15 @@ void manageHighscore(char* gridName, int score) {
         }
 
         scoreTab[j].name = userName;
+        printf("Depuis le fichier : %s\n", scoreTab[j].name);
         scoreTab[j].score = convertedScore;
 
         j++;
-        free(userName);
     } while(verify != NULL);
 
     char* name = promptForNewHighscore(score);
     scoreTab[10].name = name;
     scoreTab[10].score = score;
-
-    order(scoreTab);
 
     fclose(canal);
     canal = fopen(fileName, "wt");
@@ -294,7 +297,9 @@ void manageHighscore(char* gridName, int score) {
         fprintf(canal, "%02d;%.20s;%04d\n", 11-index, scoreTab[index].name, scoreTab[index].score);
     }
 
-    free(name);
+    for (i = 0; i < 11; i++) {
+        free(scoreTab[i].name);
+    }
     free(fileName);
     fclose(canal);
 }

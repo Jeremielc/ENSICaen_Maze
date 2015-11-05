@@ -16,7 +16,8 @@ int main (int argc, char ** argv) {
     player.score = 2000;
 
     int choice = 0;
-    char* fileName;                                     /*Name of the file used to save or load the maze.*/
+    char* fileName = NULL;                              /*Name of the file used to save or load the maze.*/
+    int isLoaded = 0;
 
     do {
         choice = displayMenu();
@@ -36,10 +37,22 @@ int main (int argc, char ** argv) {
                 break;
             case 2 :    /*Load game*/
                 system("clear");
+                if (fileName != NULL) {
+                    free(fileName);
+                }
                 fileName = askForAFileToLoad();         /*Promt the user to give a well formated name.*/
-                load(&grid, fileName);                  /*Load the grid and configure characters positions.*/
+                isLoaded = load(&grid, fileName);       /*Load the grid and configure characters positions.*/
+                if (isLoaded != 1) {
+                    fileName = NULL;
+                }
                 break;
             case 3 :    /*Play the game*/
+                if (isLoaded != 1) {
+                    printf("You must load a grid before replaying the game.\n");
+                    sleep(3);
+                    break;
+                }
+
                 player.pos_y = 1;                       /*Positionning the player at the beggining of the maze.*/
                 player.pos_x = 0;                       /*...*/
                 player.score = 2000;                    /*Initialize the score.*/
@@ -65,6 +78,7 @@ int main (int argc, char ** argv) {
                 }
 
                 displayHighscore(fileName);
+                isLoaded = 0;
                 break;
             case 4 :    /*Close the program*/
                 if (grid.matrix != NULL) {
