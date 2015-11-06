@@ -231,6 +231,11 @@ int load(GRID* grid, char* userNamed) {
     return 1;
 }
 
+/**
+* @brief Allow to register a new highscore for the player and save it to a file.
+* @param gridName - The name of the actual maze.
+* @param score - The actual score of the player.
+*/
 void manageHighscore(char* gridName, int score) {
     HIGHSCORE* scoreTab = (HIGHSCORE*) calloc(11, sizeof(HIGHSCORE));
 
@@ -304,12 +309,18 @@ void manageHighscore(char* gridName, int score) {
     fclose(canal);
 }
 
+/**
+* @brief Prompt the user to give is name in order to register a new highscore.
+* @param score - The actual score of the player.
+* @return 20 charachters for the player name.
+*/
 char* promptForNewHighscore(int score) {
     printf("You are one of the ten best player on this grid !\n");
     printf("Enter your name to save your score of %d points : ", score);
 
     char* name = (char*) calloc(20, sizeof(char));
     fgets(name, 20, stdin);
+    flush(stdin);
 
     name[strlen(name) - 1] = '\0'; /*Remove \n character.*/
 
