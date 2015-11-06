@@ -140,6 +140,12 @@ int load(GRID* grid, char* userNamed) {
                     char* fileName = (char*) malloc((strlen(userNamed) + 6) * sizeof(char));
                     sprintf(fileName, "saves/%s", userNamed);
                     canal = fopen(userNamed, "rt");
+                    if (canal == NULL) {                                                        /*If the file isn't valid.*/
+                        printf("Warning : The file you choose to load does not exist or is invalid.\n");
+                        perror("Please load another file or regenerate one from the generate menu entry.\n");
+                        sleep(5);
+                        return 0;
+                    }
                     free(fileName);
                 }
             }
@@ -148,15 +154,16 @@ int load(GRID* grid, char* userNamed) {
         char* fileName = (char*) malloc((strlen(userNamed) + 10) * sizeof(char));
         sprintf(fileName, "saves/%s.cfg", userNamed);
         canal = fopen(fileName, "rt");
+        if (canal == NULL) {                                                        /*If the file isn't valid.*/
+            printf("Warning : The file you choose to load does not exist or is invalid.\n");
+            perror("Please load another file or regenerate one from the generate menu entry.\n");
+            sleep(5);
+            return 0;
+        }
         free(fileName);
     }
 
-    if (canal == NULL) {                                                        /*If the file isn't valid.*/
-        printf("Warning : The file you choose to load does not exist or is invalid.\n");
-        perror("Please load another file or regenerate one from the generate menu entry.\n");
-        sleep(5);
-        return 0;
-    }
+
 
     int readed = 0;
     int width = 0;

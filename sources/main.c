@@ -42,9 +42,6 @@ int main (int argc, char ** argv) {
                 }
                 fileName = askForAFileToLoad();         /*Promt the user to give a well formated name.*/
                 isLoaded = load(&grid, fileName);       /*Load the grid and configure characters positions.*/
-                if (isLoaded != 1) {
-                    fileName = NULL;
-                }
                 break;
             case 3 :    /*Play the game*/
                 if (isLoaded != 1) {
@@ -69,9 +66,8 @@ int main (int argc, char ** argv) {
                 system("clear");
                 if (keyPressed != 'p') {
                     printf("You're out !\n\n");
-                    manageHighscore(fileName, player.score);
+                    /*manageHighscore(fileName, player.score);*/
                     printf("---------- Highscores ----------\n");
-                    /*Manage Highscores*/
                 } else {
                     printf("You popped out of the maze !\n\n");
                     printf("---------- Highscores ----------\n");
