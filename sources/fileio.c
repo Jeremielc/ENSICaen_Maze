@@ -9,31 +9,18 @@
 * @return The non well formated name provided by the user.
 */
 char* askForAName() {
-    printf("Choose a name for the grid : ");
+    printf("Choose a name for the grid (20 characters) : ");
     char* userNamed = (char*) malloc(20*sizeof(char));
-    int readed = 0;
-    int readNumber = 0;
+    char* verify = NULL;
 
-    do {
-        readed = getchar();
-        if (readed != '\n' && readed != EOF) {
-            if (readNumber < sizeof(userNamed)) {
-                userNamed[readNumber] = readed;
-            } else {
-                userNamed = realloc(userNamed, strlen(userNamed)+1);
-                userNamed[readNumber] = readed;
-            }
-            readNumber++;
-        }
-    }while (readed != '\n' && readed != EOF);
+    verify = fgets(userNamed, 20, stdin);
+    userNamed[strlen(userNamed) - 1] = '\0';
 
-    char* returnValue = (char*) malloc(strlen(userNamed) * sizeof(char));
-    strcpy(returnValue, userNamed);
-    printf("%s \n", returnValue);
-
-    free(userNamed);
-    free(returnValue);
-    return returnValue;
+    if (verify != NULL) {
+        return userNamed;
+    } else {
+        return NULL;
+    }
 }
 
 /**
