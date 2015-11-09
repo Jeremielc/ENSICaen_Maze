@@ -7,6 +7,6 @@ The player will have to get out of the maze (gathering object) with the highest 
 
 
 @ToDo
-Manage new highscore
+segmentation fault spotted in askForAName().
 
 valgrind --leak-check=full ./maze
