@@ -79,8 +79,4 @@ void reorderHighscore(HIGHSCORE* tab, int length) {
             tab[i] = inter;
         }
     }
-
-    for (i = 0; i < length; i++) {
-        printf("%s %d\n", tab[i].name, tab[i].score);
-    }
 }
