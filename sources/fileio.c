@@ -9,18 +9,25 @@
 * @return The non well formated name provided by the user.
 */
 char* askForAName() {
-    printf("Choose a name for the grid (20 characters) : ");
-    char* userNamed = (char*) malloc(20*sizeof(char));
-    char* verify = NULL;
+    printf("Choose a name for the grid : ");
+    char* userNamed = (char*) malloc(1*sizeof(char));
+    userNamed[0] = '\0';
 
-    verify = fgets(userNamed, 20, stdin);
-    userNamed[strlen(userNamed) - 1] = '\0';
+    int c = 0;
+    int i = 0;
+    do {
+        c = getchar();
+        if (c != '\n' && c != EOF) {
+            userNamed[i] = c;
+            i++;
+        }
 
-    if (verify != NULL) {
-        return userNamed;
-    } else {
-        return NULL;
-    }
+        if (i >= strlen(userNamed)) {
+            userNamed = realloc(userNamed, strlen(userNamed) + 1);
+        }
+    } while(c != '\n' && c != EOF);
+
+    return userNamed;
 }
 
 /**
@@ -106,6 +113,7 @@ char* formatName(char* name) {
         }
     }
 
+    free(name);
     return finalName;
 }
 
@@ -373,7 +381,6 @@ void save(GRID* grid, char* name) {
     char* highscoreName = (char*) malloc((strlen(name) + 6) * sizeof(char));
     sprintf(fileName, "%s.score", name);
     highscore = fopen(highscoreName, "wt");
-    free(highscoreName);
 
     fprintf(canal, "Rank;Username;Score\n");
     i = 0;
@@ -382,8 +389,9 @@ void save(GRID* grid, char* name) {
     }
 
     fclose(highscore);
+    free(highscoreName);
 
-    system("ls saves/ > /dev/null/ 2>&1 || mkdir saves");
+    system("ls saves/ > /dev/null 2>&1 || mkdir saves");
     system("mv *.cfg saves/");
     system("mv *.score saves/");
 }
