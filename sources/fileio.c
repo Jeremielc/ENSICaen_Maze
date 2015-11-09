@@ -18,10 +18,8 @@ char* askForAName() {
         readed = getchar();
         if (readed != '\n' && readed != EOF) {
             if (readNumber < sizeof(userNamed)) {
-                printf("%s %d\n", "readNumber < strlen : ", readNumber);
                 userNamed[readNumber] = readed;
             } else {
-                printf("%s %d\n", "else : ", readNumber);
                 userNamed = realloc(userNamed, strlen(userNamed)+1);
                 userNamed[readNumber] = readed;
             }
@@ -34,6 +32,7 @@ char* askForAName() {
     printf("%s \n", returnValue);
 
     free(userNamed);
+    free(returnValue);
     return returnValue;
 }
 
@@ -288,11 +287,11 @@ void manageHighscore(char* gridName, int score) {
         }
 
         scoreTab[j].name = userName;
-        printf("Depuis le fichier : %s\n", scoreTab[j].name);
         scoreTab[j].score = convertedScore;
 
         j++;
     } while(verify != NULL);
+
 
     char* name = promptForNewHighscore(score);
     scoreTab[10].name = name;
@@ -309,12 +308,16 @@ void manageHighscore(char* gridName, int score) {
         fprintf(canal, "%02d;%.20s;%04d\n", 11-index, scoreTab[index].name, scoreTab[index].score);
     }
 
+    fclose(canal);
+
     for (i = 0; i < 11; i++) {
         free(scoreTab[i].name);
     }
     free(scoreTab);
+    free(readedScore);
+    free(readedLine);
+    free(userName);
     free(fileName);
-    fclose(canal);
 }
 
 /**
