@@ -140,13 +140,13 @@ int load(GRID* grid, char* userNamed) {
                     char* fileName = (char*) malloc((strlen(userNamed) + 6) * sizeof(char));
                     sprintf(fileName, "saves/%s", userNamed);
                     canal = fopen(userNamed, "rt");
-                    if (canal == NULL) {                                                        /*If the file isn't valid.*/
+                    free(fileName);
+                    if (canal == NULL) {                                        /*If the file isn't valid.*/
                         printf("Warning : The file you choose to load does not exist or is invalid.\n");
                         perror("Please load another file or regenerate one from the generate menu entry.\n");
                         sleep(5);
                         return 0;
                     }
-                    free(fileName);
                 }
             }
         }
@@ -154,16 +154,14 @@ int load(GRID* grid, char* userNamed) {
         char* fileName = (char*) malloc((strlen(userNamed) + 10) * sizeof(char));
         sprintf(fileName, "saves/%s.cfg", userNamed);
         canal = fopen(fileName, "rt");
-        if (canal == NULL) {                                                        /*If the file isn't valid.*/
+        free(fileName);
+        if (canal == NULL) {                                                    /*If the file isn't valid.*/
             printf("Warning : The file you choose to load does not exist or is invalid.\n");
             perror("Please load another file or regenerate one from the generate menu entry.\n");
             sleep(5);
             return 0;
         }
-        free(fileName);
     }
-
-
 
     int readed = 0;
     int width = 0;
@@ -300,6 +298,8 @@ void manageHighscore(char* gridName, int score) {
     scoreTab[10].name = name;
     scoreTab[10].score = score;
 
+    reorderHighscore(scoreTab, 11);
+
     fclose(canal);
     canal = fopen(fileName, "wt");
 
@@ -312,6 +312,7 @@ void manageHighscore(char* gridName, int score) {
     for (i = 0; i < 11; i++) {
         free(scoreTab[i].name);
     }
+    free(scoreTab);
     free(fileName);
     fclose(canal);
 }
@@ -319,7 +320,7 @@ void manageHighscore(char* gridName, int score) {
 /**
 * @brief Prompt the user to give is name in order to register a new highscore.
 * @param score - The actual score of the player.
-* @return 20 charachters for the player name.
+* @return 20 characters for the player name.
 */
 char* promptForNewHighscore(int score) {
     printf("You are one of the ten best player on this grid !\n");
@@ -327,7 +328,7 @@ char* promptForNewHighscore(int score) {
 
     char* name = (char*) calloc(20, sizeof(char));
     fgets(name, 20, stdin);
-    flush(stdin);
+    /*flush(stdin);*/
 
     name[strlen(name) - 1] = '\0'; /*Remove \n character.*/
 

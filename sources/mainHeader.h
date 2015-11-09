@@ -58,6 +58,6 @@ int     load                        (GRID*, char*);
 void    manageHighscore             (char*, int);
 void    movePlayer                  (GRID*, CHARACTER*, int);
 char*   promptForNewHighscore       ();
-void    reorder                     (HIGHSCORE*);
+void    reorderHighscore                     (HIGHSCORE*, int);
 void    save                        (GRID*, char*);
 void 	searchAndReplace			(GRID*, int, int);

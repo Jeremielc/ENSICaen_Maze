@@ -7,5 +7,6 @@ The player will have to get out of the maze (gathering object) with the highest 
 
 
 @ToDo
-Manage replay and autoreload
 Manage new highscore
+
+valgrind --leak-check=full ./maze

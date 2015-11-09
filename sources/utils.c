@@ -53,23 +53,34 @@ void freeMatrix(int height, int** matrix) {
     free(matrix);
 }
 
-void reorder(HIGHSCORE* scoreTab) {
-    int i = 11;
+/**
+* @brief Allow to order the a tab from the less significant value to the most significant.
+* @param tab - A HIGHSCORE tab containing the list of hightscores.
+* @param length - The length of the tab.
+*/
+void reorderHighscore(HIGHSCORE* tab, int length) {
+    int i = 0;
     int j = 0;
-    int change = 1;
-    HIGHSCORE temp;
+    int imin = 0;
+    HIGHSCORE inter;
 
-    while (i > 0 && change == 1) {
-        change = 0;
-        for (j = 1; j < i - 1; j++) {
-            if (scoreTab[j].score >= scoreTab[j + 1].score) {
-                temp = scoreTab[j];
-                scoreTab[j] = scoreTab[j + 1];
-                scoreTab[j + 1] = temp;
-                change = 1;
+    for (i = 0; i < length - 1; i++) {
+        imin = i;
+
+        for (j = i + 1; j < length; j++) {
+            if (tab[j].score < tab[imin].score) {
+                imin = j;
             }
         }
 
-        i--;
+        if (i != imin) {
+            inter = tab[imin];
+            tab[imin] = tab[i];
+            tab[i] = inter;
+        }
+    }
+
+    for (i = 0; i < length; i++) {
+        printf("%s %d\n", tab[i].name, tab[i].score);
     }
 }
