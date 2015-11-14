@@ -1,11 +1,4 @@
 var searchData=
 [
-  ['main',['main',['../main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627',1,'main.c']]],
-  ['main_2ec',['main.c',['../main_8c.html',1,'']]],
-  ['mainheader_2eh',['mainHeader.h',['../main_header_8h.html',1,'']]],
-  ['malus',['MALUS',['../main_header_8h.html#a2c5d1ba3cbc9accd91777476a853c1e1',1,'mainHeader.h']]],
-  ['manageitems',['manageItems',['../main_header_8h.html#aba13534623ec4b1dc2e19d16bd9d5484',1,'manageItems(GRID *, CHARACTER *):&#160;moves.c'],['../moves_8c.html#aa95d2cb7ca887b18a4e2133167a1c2c1',1,'manageItems(GRID *grid, CHARACTER *player):&#160;moves.c']]],
-  ['matrix',['matrix',['../struct_g_r_i_d.html#ac29a4fcfe6e2fb5a94cb5350ac977ce4',1,'GRID']]],
-  ['moveplayer',['movePlayer',['../main_header_8h.html#a1e4c7021ab0bbad2fb439575983495f5',1,'movePlayer(GRID *, CHARACTER *, int):&#160;moves.c'],['../moves_8c.html#a1e7689790c63adcddc2520445824950b',1,'movePlayer(GRID *grid, CHARACTER *player, int move):&#160;moves.c']]],
-  ['moves_2ec',['moves.c',['../moves_8c.html',1,'']]]
+  ['initgrid',['initGrid',['../grid_8c.html#ae01832c195a1a11c47cec88a6321d3fc',1,'initGrid(GRID *grid):&#160;grid.c'],['../main_header_8h.html#ab368242672566b7b3dc7f02128180b2e',1,'initGrid(GRID *):&#160;grid.c']]]
 ];

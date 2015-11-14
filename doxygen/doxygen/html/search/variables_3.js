@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['score',['score',['../struct_c_h_a_r_a_c_t_e_r.html#aef160b7437d94056f1dc59646cd5b87d',1,'CHARACTER']]]
+  ['matrix',['matrix',['../struct_g_r_i_d.html#ac29a4fcfe6e2fb5a94cb5350ac977ce4',1,'GRID']]]
 ];

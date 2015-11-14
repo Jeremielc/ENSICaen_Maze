@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.9.1"/>
-<title>Maze: /home/jeremie/git/ENSICaen_Maze/sources/moves.c File Reference</title>
+<title>Maze: /home/jeremie/Developpement/git/ENSICaen_Maze/sources/moves.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -40,6 +40,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -96,48 +97,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for moves.c:</div>
 <div class="dyncontent">
-<div class="center"><img src="moves_8c__incl.png" border="0" usemap="#_2home_2jeremie_2git_2_e_n_s_i_caen___maze_2sources_2moves_8c" alt=""/></div>
-<map name="_2home_2jeremie_2git_2_e_n_s_i_caen___maze_2sources_2moves_8c" id="_2home_2jeremie_2git_2_e_n_s_i_caen___maze_2sources_2moves_8c">
-</map>
+<div class="center"><img src="moves_8c__incl.png" border="0" usemap="#_2home_2jeremie_2_developpement_2git_2_e_n_s_i_caen___maze_2sources_2moves_8c" alt=""/></div>
+<map name="_2home_2jeremie_2_developpement_2git_2_e_n_s_i_caen___maze_2sources_2moves_8c" id="_2home_2jeremie_2_developpement_2git_2_e_n_s_i_caen___maze_2sources_2moves_8c">
+<area shape="rect" id="node2" href="main_header_8h.html" title="mainHeader.h" alt="" coords="157,109,259,136"/></map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a1e7689790c63adcddc2520445824950b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="moves_8c.html#a1e7689790c63adcddc2520445824950b">movePlayer</a> (<a class="el" href="struct_g_r_i_d.html">GRID</a> *grid, <a class="el" href="struct_c_h_a_r_a_c_t_e_r.html">CHARACTER</a> *player, int move)</td></tr>
-<tr class="memdesc:a1e7689790c63adcddc2520445824950b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manage the moves of the character.  <a href="#a1e7689790c63adcddc2520445824950b">More...</a><br /></td></tr>
+<tr class="memdesc:a1e7689790c63adcddc2520445824950b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manage the moves of the character and adjust the score.  <a href="#a1e7689790c63adcddc2520445824950b">More...</a><br /></td></tr>
 <tr class="separator:a1e7689790c63adcddc2520445824950b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa95d2cb7ca887b18a4e2133167a1c2c1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="moves_8c.html#aa95d2cb7ca887b18a4e2133167a1c2c1">manageItems</a> (<a class="el" href="struct_g_r_i_d.html">GRID</a> *grid, <a class="el" href="struct_c_h_a_r_a_c_t_e_r.html">CHARACTER</a> *player)</td></tr>
-<tr class="separator:aa95d2cb7ca887b18a4e2133167a1c2c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>Jérémie Leclerc </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="aa95d2cb7ca887b18a4e2133167a1c2c1"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void manageItems </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_g_r_i_d.html">GRID</a> *&#160;</td>
-          <td class="paramname"><em>grid</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="struct_c_h_a_r_a_c_t_e_r.html">CHARACTER</a> *&#160;</td>
-          <td class="paramname"><em>player</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a class="anchor" id="a1e7689790c63adcddc2520445824950b"></a>
 <div class="memitem">
 <div class="memproto">
@@ -168,11 +141,11 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Manage the moves of the character. </p>
+<p>Manage the moves of the character and adjust the score. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">grid</td><td>- A pointer to a <a class="el" href="struct_g_r_i_d.html" title="A structure used to contain the grid and its dimensions. ">GRID</a> structure containing the maze matrix and its dimensions. </td></tr>
-    <tr><td class="paramname">player</td><td>- A pointer to a <a class="el" href="struct_c_h_a_r_a_c_t_e_r.html" title="A structure that contain coordinates and score for the differents characters. ">CHARACTER</a> structure containg player coordinates. </td></tr>
+    <tr><td class="paramname">player</td><td>- A pointer to a <a class="el" href="struct_c_h_a_r_a_c_t_e_r.html" title="A structure that contain coordinates and score for the differents characters. ">CHARACTER</a> structure containg player coordinates and score. </td></tr>
     <tr><td class="paramname">move</td><td>- A character repreenting the move to make. </td></tr>
   </table>
   </dd>

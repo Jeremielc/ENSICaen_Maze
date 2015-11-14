@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.9.1"/>
-<title>Maze: /home/jeremie/git/ENSICaen_Maze/sources/fileio.c File Reference</title>
+<title>Maze: /home/jeremie/Developpement/git/ENSICaen_Maze/sources/fileio.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -40,6 +40,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -96,9 +97,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for fileio.c:</div>
 <div class="dyncontent">
-<div class="center"><img src="fileio_8c__incl.png" border="0" usemap="#_2home_2jeremie_2git_2_e_n_s_i_caen___maze_2sources_2fileio_8c" alt=""/></div>
-<map name="_2home_2jeremie_2git_2_e_n_s_i_caen___maze_2sources_2fileio_8c" id="_2home_2jeremie_2git_2_e_n_s_i_caen___maze_2sources_2fileio_8c">
-</map>
+<div class="center"><img src="fileio_8c__incl.png" border="0" usemap="#_2home_2jeremie_2_developpement_2git_2_e_n_s_i_caen___maze_2sources_2fileio_8c" alt=""/></div>
+<map name="_2home_2jeremie_2_developpement_2git_2_e_n_s_i_caen___maze_2sources_2fileio_8c" id="_2home_2jeremie_2_developpement_2git_2_e_n_s_i_caen___maze_2sources_2fileio_8c">
+<area shape="rect" id="node2" href="main_header_8h.html" title="mainHeader.h" alt="" coords="157,109,259,136"/></map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -109,15 +110,24 @@ Functions</h2></td></tr>
 <tr class="memitem:aba9f2568e0a19592dea367e92ac0a7fb"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fileio_8c.html#aba9f2568e0a19592dea367e92ac0a7fb">askForAFileToLoad</a> ()</td></tr>
 <tr class="memdesc:aba9f2568e0a19592dea367e92ac0a7fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Display all saves from previous execution and ask the user to choose one of them.  <a href="#aba9f2568e0a19592dea367e92ac0a7fb">More...</a><br /></td></tr>
 <tr class="separator:aba9f2568e0a19592dea367e92ac0a7fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55ff148b9c38b697c129bdca6c82164a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fileio_8c.html#a55ff148b9c38b697c129bdca6c82164a">displayHighscore</a> (char *gridName)</td></tr>
+<tr class="memdesc:a55ff148b9c38b697c129bdca6c82164a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Display the highscore table from the gridName.score file associated to the save.  <a href="#a55ff148b9c38b697c129bdca6c82164a">More...</a><br /></td></tr>
+<tr class="separator:a55ff148b9c38b697c129bdca6c82164a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a05c3302e3718e2773eecc0cc7ef94f71"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fileio_8c.html#a05c3302e3718e2773eecc0cc7ef94f71">formatName</a> (char *name)</td></tr>
 <tr class="memdesc:a05c3302e3718e2773eecc0cc7ef94f71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allow to replace spaces by underscores from a non well formated string.  <a href="#a05c3302e3718e2773eecc0cc7ef94f71">More...</a><br /></td></tr>
 <tr class="separator:a05c3302e3718e2773eecc0cc7ef94f71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0889b17c9b7708d642d4ba045f685895"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fileio_8c.html#a0889b17c9b7708d642d4ba045f685895">load</a> (<a class="el" href="struct_g_r_i_d.html">GRID</a> *grid, char *userNamed)</td></tr>
+<tr class="memdesc:a0889b17c9b7708d642d4ba045f685895"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allow to load a previously saved grid.  <a href="#a0889b17c9b7708d642d4ba045f685895">More...</a><br /></td></tr>
+<tr class="separator:a0889b17c9b7708d642d4ba045f685895"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac89704e4325af2a4319cb6a7c4883d05"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fileio_8c.html#ac89704e4325af2a4319cb6a7c4883d05">manageHighscore</a> (char *gridName, int score)</td></tr>
+<tr class="memdesc:ac89704e4325af2a4319cb6a7c4883d05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allow to register a new highscore for the player and save it to a file.  <a href="#ac89704e4325af2a4319cb6a7c4883d05">More...</a><br /></td></tr>
+<tr class="separator:ac89704e4325af2a4319cb6a7c4883d05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4699d2e7513a74127853b69df7c6bda"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fileio_8c.html#ae4699d2e7513a74127853b69df7c6bda">promptForNewHighscore</a> (int score)</td></tr>
+<tr class="memdesc:ae4699d2e7513a74127853b69df7c6bda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prompt the user to give is name in order to register a new highscore.  <a href="#ae4699d2e7513a74127853b69df7c6bda">More...</a><br /></td></tr>
+<tr class="separator:ae4699d2e7513a74127853b69df7c6bda"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4cdc26250ed8433ea54da62675115c5d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fileio_8c.html#a4cdc26250ed8433ea54da62675115c5d">save</a> (<a class="el" href="struct_g_r_i_d.html">GRID</a> *grid, char *name)</td></tr>
 <tr class="memdesc:a4cdc26250ed8433ea54da62675115c5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allow to save the newly created grid.  <a href="#a4cdc26250ed8433ea54da62675115c5d">More...</a><br /></td></tr>
 <tr class="separator:a4cdc26250ed8433ea54da62675115c5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a04bf82add4db5ea102ec6a6a9d85e26b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fileio_8c.html#a04bf82add4db5ea102ec6a6a9d85e26b">load</a> (<a class="el" href="struct_g_r_i_d.html">GRID</a> *grid, char *userNamed)</td></tr>
-<tr class="memdesc:a04bf82add4db5ea102ec6a6a9d85e26b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allow to load a previously saved grid.  <a href="#a04bf82add4db5ea102ec6a6a9d85e26b">More...</a><br /></td></tr>
-<tr class="separator:a04bf82add4db5ea102ec6a6a9d85e26b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>Jérémie Leclerc. </dd></dl>
@@ -158,6 +168,30 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a55ff148b9c38b697c129bdca6c82164a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void displayHighscore </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>gridName</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Display the highscore table from the gridName.score file associated to the save. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">gridName</td><td>- The name for the grid, readed from the user when the grid is newly generated, from the name of the specified savefile when user choose one to load. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="a05c3302e3718e2773eecc0cc7ef94f71"></a>
 <div class="memitem">
 <div class="memproto">
@@ -183,12 +217,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a04bf82add4db5ea102ec6a6a9d85e26b"></a>
+<a class="anchor" id="a0889b17c9b7708d642d4ba045f685895"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void load </td>
+          <td class="memname">int load </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_g_r_i_d.html">GRID</a> *&#160;</td>
           <td class="paramname"><em>grid</em>, </td>
@@ -215,6 +249,67 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>0 if the grid cannot be loaded, 1 if it can. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ac89704e4325af2a4319cb6a7c4883d05"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void manageHighscore </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>gridName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>score</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Allow to register a new highscore for the player and save it to a file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">gridName</td><td>- The name of the actual maze. </td></tr>
+    <tr><td class="paramname">score</td><td>- The actual score of the player. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ae4699d2e7513a74127853b69df7c6bda"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* promptForNewHighscore </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>score</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Prompt the user to give is name in order to register a new highscore. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">score</td><td>- The actual score of the player. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>20 characters for the player name. </dd></dl>
 
 </div>
 </div>
@@ -247,7 +342,6 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">grid</td><td>- A pointer to a <a class="el" href="struct_g_r_i_d.html" title="A structure used to contain the grid and its dimensions. ">GRID</a> structure containing the maze matrix and its dimensions. </td></tr>
     <tr><td class="paramname">name</td><td>- The name of the grid. Used to name the save file. </td></tr>
-    <tr><td class="paramname">personage</td><td>- </td></tr>
   </table>
   </dd>
 </dl>
