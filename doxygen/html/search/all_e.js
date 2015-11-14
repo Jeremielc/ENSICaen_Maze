@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['wall',['WALL',['../main_header_8h.html#ac749b87dd5d843e4add3eb8e8a130f62',1,'mainHeader.h']]],
-  ['width',['width',['../struct_g_r_i_d.html#a2474a5474cbff19523a51eb1de01cda4',1,'GRID']]]
+  ['reorderhighscore',['reorderHighscore',['../main_header_8h.html#a42d50aec531f39d2c53cb48710c309a5',1,'reorderHighscore(HIGHSCORE *, int):&#160;utils.c'],['../utils_8c.html#aa46c55393159d6cc837ed10b28e6ba63',1,'reorderHighscore(HIGHSCORE *tab, int length):&#160;utils.c']]]
 ];

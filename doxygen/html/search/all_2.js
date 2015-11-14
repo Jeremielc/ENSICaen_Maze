@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['character',['CHARACTER',['../struct_c_h_a_r_a_c_t_e_r.html',1,'']]],
-  ['cleangrid',['cleanGrid',['../grid_8c.html#a205bced9b6f73ac41ebdfaedd9d6045d',1,'cleanGrid(GRID *grid):&#160;grid.c'],['../main_header_8h.html#a205bced9b6f73ac41ebdfaedd9d6045d',1,'cleanGrid(GRID *grid):&#160;grid.c']]]
+  ['basic',['Basic',['../group___basic.html',1,'']]],
+  ['basic_2ec',['Basic.c',['../_basic_8c.html',1,'']]],
+  ['basic_2eh',['Basic.h',['../_basic_8h.html',1,'']]],
+  ['bindtextdomain',['bindtextdomain',['../group___framework.html#ga19d270d34b833dec51cd00fd788010da',1,'CUnit_intl.h']]],
+  ['bonus',['BONUS',['../main_header_8h.html#a96a9822fa134450197dd454b1478a193',1,'mainHeader.h']]]
 ];

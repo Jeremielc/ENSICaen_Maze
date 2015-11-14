@@ -40,6 +40,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
       <li class="current"><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -90,7 +91,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>A structure that contain coordinates for the differents characters.  
+<p>A structure that contain coordinates and score for the differents characters.  
  <a href="struct_c_h_a_r_a_c_t_e_r.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="main_header_8h_source.html">mainHeader.h</a>&gt;</code></p>
@@ -101,16 +102,11 @@ Data Fields</h2></td></tr>
 <tr class="separator:a769c689813b19fb03572dc4937b40993"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a989d3e09b707fb1f4bc2355ba5855a0c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_c_h_a_r_a_c_t_e_r.html#a989d3e09b707fb1f4bc2355ba5855a0c">pos_x</a></td></tr>
 <tr class="separator:a989d3e09b707fb1f4bc2355ba5855a0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef160b7437d94056f1dc59646cd5b87d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_c_h_a_r_a_c_t_e_r.html#aef160b7437d94056f1dc59646cd5b87d">score</a></td></tr>
+<tr class="separator:aef160b7437d94056f1dc59646cd5b87d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A structure that contain coordinates for the differents characters. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">pos_x</td><td>- The x position of the character (column). </td></tr>
-    <tr><td class="paramname">pos_y</td><td>- The y position of the character (lines). </td></tr>
-  </table>
-  </dd>
-</dl>
+<div class="textblock"><p>A structure that contain coordinates and score for the differents characters. </p>
 </div><h2 class="groupheader">Field Documentation</h2>
 <a class="anchor" id="a989d3e09b707fb1f4bc2355ba5855a0c"></a>
 <div class="memitem">
@@ -121,6 +117,7 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>pos_y - The y position of the character (lines). </p>
 
 </div>
 </div>
@@ -133,11 +130,25 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>pos_x - The x position of the character (column). </p>
+
+</div>
+</div>
+<a class="anchor" id="aef160b7437d94056f1dc59646cd5b87d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int score</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>score - The score of the character. </p>
 
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>/home/jeremie/Documents/Programmation/Programmation_C/Maze_vanilla/sources/<a class="el" href="main_header_8h_source.html">mainHeader.h</a></li>
+<li>/home/jeremie/Developpement/git/ENSICaen_Maze/sources/<a class="el" href="main_header_8h_source.html">mainHeader.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

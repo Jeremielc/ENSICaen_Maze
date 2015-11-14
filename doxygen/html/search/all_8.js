@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['load',['load',['../fileio_8c.html#a04bf82add4db5ea102ec6a6a9d85e26b',1,'load(GRID *grid, char *userNamed):&#160;fileio.c'],['../main_header_8h.html#a4b94e59d4eeae0109fc2d351674f4fa1',1,'load(GRID *, char *):&#160;fileio.c']]]
+  ['height',['height',['../struct_g_r_i_d.html#ad12fc34ce789bce6c8a05d8a17138534',1,'GRID']]],
+  ['highscore',['HIGHSCORE',['../struct_h_i_g_h_s_c_o_r_e.html',1,'']]]
 ];

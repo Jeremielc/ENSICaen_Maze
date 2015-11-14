@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.9.1"/>
-<title>Maze: /home/jeremie/Documents/Programmation/Programmation_C/Maze_vanilla/sources/utils.c File Reference</title>
+<title>Maze: /home/jeremie/Developpement/git/ENSICaen_Maze/sources/utils.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -40,6 +40,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -96,8 +97,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for utils.c:</div>
 <div class="dyncontent">
-<div class="center"><img src="utils_8c__incl.png" border="0" usemap="#_2home_2jeremie_2_documents_2_programmation_2_programmation___c_2_maze__vanilla_2sources_2utils_8c" alt=""/></div>
-<map name="_2home_2jeremie_2_documents_2_programmation_2_programmation___c_2_maze__vanilla_2sources_2utils_8c" id="_2home_2jeremie_2_documents_2_programmation_2_programmation___c_2_maze__vanilla_2sources_2utils_8c">
+<div class="center"><img src="utils_8c__incl.png" border="0" usemap="#_2home_2jeremie_2_developpement_2git_2_e_n_s_i_caen___maze_2sources_2utils_8c" alt=""/></div>
+<map name="_2home_2jeremie_2_developpement_2git_2_e_n_s_i_caen___maze_2sources_2utils_8c" id="_2home_2jeremie_2_developpement_2git_2_e_n_s_i_caen___maze_2sources_2utils_8c">
 <area shape="rect" id="node2" href="main_header_8h.html" title="mainHeader.h" alt="" coords="157,109,259,136"/></map>
 </div>
 </div><table class="memberdecls">
@@ -112,6 +113,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ac2f7747d2180d396d6f5abd667ac30fd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8c.html#ac2f7747d2180d396d6f5abd667ac30fd">freeMatrix</a> (int height, int **matrix)</td></tr>
 <tr class="memdesc:ac2f7747d2180d396d6f5abd667ac30fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allow to free the memory reserved for the matrix representing the maze.  <a href="#ac2f7747d2180d396d6f5abd667ac30fd">More...</a><br /></td></tr>
 <tr class="separator:ac2f7747d2180d396d6f5abd667ac30fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa46c55393159d6cc837ed10b28e6ba63"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8c.html#aa46c55393159d6cc837ed10b28e6ba63">reorderHighscore</a> (<a class="el" href="struct_h_i_g_h_s_c_o_r_e.html">HIGHSCORE</a> *tab, int length)</td></tr>
+<tr class="memdesc:aa46c55393159d6cc837ed10b28e6ba63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allow to order the a tab from the less significant value to the most significant.  <a href="#aa46c55393159d6cc837ed10b28e6ba63">More...</a><br /></td></tr>
+<tr class="separator:aa46c55393159d6cc837ed10b28e6ba63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>Jérémie Leclerc. </dd></dl>
@@ -176,6 +180,48 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Allow to free the memory reserved for the matrix representing the maze. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">height</td><td>- The number of lines in the matrix. </td></tr>
+    <tr><td class="paramname">matrix</td><td>- The tow dimensional tab to free. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="aa46c55393159d6cc837ed10b28e6ba63"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void reorderHighscore </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_h_i_g_h_s_c_o_r_e.html">HIGHSCORE</a> *&#160;</td>
+          <td class="paramname"><em>tab</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Allow to order the a tab from the less significant value to the most significant. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tab</td><td>- A <a class="el" href="struct_h_i_g_h_s_c_o_r_e.html">HIGHSCORE</a> tab containing the list of hightscores. </td></tr>
+    <tr><td class="paramname">length</td><td>- The length of the tab. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
