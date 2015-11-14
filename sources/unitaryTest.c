@@ -6,9 +6,11 @@ void verifyCleanGrid();
 void verifyGenerateItems();
 void verifyInitGrid();
 void verifySearchAndReplace();
+void verifyMovePlayer();
+void verifyReorderHighscore();
 
 int main(int argc, char** argv) {
-    CU_pSuite pSuite[6] = {};
+    CU_pSuite pSuite[7] = {};
 
     CU_initialize_registry();
 
@@ -29,6 +31,10 @@ int main(int argc, char** argv) {
 
     pSuite[5] = CU_add_suite("Verify movePlayer()", NULL, NULL);
     CU_ADD_TEST(pSuite[5], verifyMovePlayer);
+
+    pSuite[6] = CU_add_suite("Verify reorderHighscore()", NULL, NULL);
+    CU_ADD_TEST(pSuite[6], reorderHighscore);
+
 
     CU_basic_run_tests();
     CU_cleanup_registry();
@@ -247,5 +253,29 @@ void verifyMovePlayer() {
 }
 
 void verifyReorderHighscore() {
-    
+    HIGHSCORE tab[5];
+    tab[0].name = "John";
+    tab[0].score = 1000;
+    tab[1].name = "Emma";
+    tab[1].score = 5000;
+    tab[2].name = "Peter";
+    tab[2].score = 1500;
+    tab[3].name = "Moe";
+    tab[3].score = 2000;
+    tab[4].name = "Homer";
+    tab[4].score = 45;
+
+    int nbMember = 5;
+
+    reorderHighscore(tab, nbMember);
+    CU_ASSERT(strcmp(tab[0].name, "Homer") == 0);
+    CU_ASSERT(strcmp(tab[1].name, "John") == 0);
+    CU_ASSERT(strcmp(tab[2].name, "Peter") == 0);
+    CU_ASSERT(strcmp(tab[3].name, "Moe") == 0);
+    CU_ASSERT(strcmp(tab[4].name, "Emma") == 0);
+
+    CU_ASSERT(tab[4].score > tab[3].score);
+    CU_ASSERT(tab[3].score > tab[2].score);
+    CU_ASSERT(tab[2].score > tab[1].score);
+    CU_ASSERT(tab[1].score > tab[0].score);
 }
