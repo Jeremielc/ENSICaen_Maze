@@ -102,6 +102,10 @@ void displayHighscore(char* gridName) {
 * @return A well formated string for the name of the save.
 */
 char* formatName(char* name) {
+    if (name == NULL) {
+        return NULL;
+    }
+
     char* finalName = (char*) malloc(strlen(name) * sizeof(char));
     int i = 0;
 

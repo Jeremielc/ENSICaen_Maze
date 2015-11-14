@@ -1,4 +1,4 @@
-all : maze clean
+all : maze clean unitary_test
 
 maze : grid.o main.o utils.o fileio.o moves.o
 	gcc main.o grid.o utils.o fileio.o moves.o -Wall -ansi -o maze
@@ -17,6 +17,10 @@ fileio.o : sources/fileio.c
 
 moves.o : sources/moves.c
 	gcc -c sources/moves.c -Wall -ansi
+
+unitary_test : sources/unitaryTest.c
+	gcc sources/unitaryTest.c -Wall -ansi -o unitaryTest
+	./unitaryTest
 
 clean :
 	rm -f *.o
